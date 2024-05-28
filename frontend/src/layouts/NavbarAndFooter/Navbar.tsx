@@ -1,4 +1,4 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
+import { NavLink } from 'react-router-dom';
 
 export const Navbar = () => {
   return (
@@ -19,22 +19,26 @@ export const Navbar = () => {
         <div className='collapse navbar-collapse' id='navbarNavDropdrown'>
           <ul className='navbar-nav'>
             <li className='nav-item'>
-              <a className='nav-link' href='#'>
+              <NavLink className='nav-link' to='/home'>
                 Home
-              </a>
+              </NavLink>
             </li>
             <li className='nav-item'>
-              <a className='nav-link' href='#'>
+              <NavLink className='nav-link' to='/search'>
                 Search Books
-              </a>
+              </NavLink>
             </li>
           </ul>
 
           <ul className='navbar-nav ms-auto'>
             <li className='nav-item m-1'>
-              <a className='btn btn-outline-light' type='button' href='#'>
+              <NavLink
+                className='btn btn-outline-light'
+                type='button'
+                to='/login'
+              >
                 Sign In
-              </a>
+              </NavLink>
             </li>
           </ul>
         </div>

@@ -1,4 +1,5 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
+import { Link } from 'react-router-dom';
+
 export const Heroes = () => {
   return (
     <div>
@@ -15,13 +16,13 @@ export const Heroes = () => {
                 Whether it is to learn a new skill or grow within one, we will
                 be able to provide the top content for you!
               </p>
-              <a
+              <Link
                 className='btn main-color btn-lg text-white'
                 type='button'
-                href='#'
+                to='/login'
               >
                 Sign Up
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -56,13 +57,13 @@ export const Heroes = () => {
                 Whether it is to learn a new skill or grow within one, we will
                 be able to provide the top content for you!
               </p>
-              <a
+              <Link
                 className='btn main-color btn-lg text-white'
                 type='button'
-                href='#'
+                to='/login'
               >
                 Sign Up
-              </a>
+              </Link>
             </div>
           </div>
           <div className='m-2'>
