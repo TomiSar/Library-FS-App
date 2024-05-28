@@ -1,4 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
+import { Link } from 'react-router-dom';
 import BookModel from '../../../models/BookModel';
 
 type Props = {
@@ -21,9 +22,9 @@ export const ReturnBook = ({ book }: Props) => {
         )}
         <h6 className='mt-2'>{book.title}</h6>
         <p>{book.author}</p>
-        <a className='btn main-color text-white' href='#'>
+        <Link className='btn main-color text-white' to={`/checkout/${book.id}`}>
           Reserve
-        </a>
+        </Link>
       </div>
     </div>
   );

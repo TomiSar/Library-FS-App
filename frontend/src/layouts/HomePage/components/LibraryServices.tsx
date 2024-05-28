@@ -1,5 +1,9 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
+import { Link } from 'react-router-dom';
+import { useOktaAuth } from '@okta/okta-react';
+
 export const LibraryServices = () => {
+  const { authState } = useOktaAuth();
+
   return (
     <div className='container my-5'>
       <div className='row p-4 align-items-center border shadow-lg'>
@@ -12,9 +16,19 @@ export const LibraryServices = () => {
             admin's a personal message!
           </p>
           <div className='d-grid gap-2 justify-content-md-start mb-4 mb-lg-3'>
-            <a className='btn main-color btn-lg text-white' href='#'>
-              Sign Up
-            </a>
+            {authState?.isAuthenticated ? (
+              <Link
+                className='btn main-color btn-lg px-4 me-md-2 fw-bold text-white'
+                to='#'
+                type='button'
+              >
+                Library Services
+              </Link>
+            ) : (
+              <Link className='btn main-color btn-lg text-white' to='/login'>
+                Sign Up
+              </Link>
+            )}
           </div>
         </div>
         <div className='col-lg-4 offset-lg-1 shadow-lg lost-image'></div>
