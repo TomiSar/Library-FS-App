@@ -4,9 +4,47 @@ import BookModel from '../../models/BookModel';
 type Props = {
   book: BookModel | undefined;
   mobile: boolean;
+  currentLoansAccount: number;
+  isAuthenticated: any;
+  isCheckedOut: boolean;
+  checkoutBook: any;
 };
 
-export const CheckoutAndReviewBox = ({ book, mobile }: Props) => {
+export const CheckoutAndReviewBox = ({
+  book,
+  mobile,
+  currentLoansAccount,
+  isAuthenticated,
+  isCheckedOut,
+  checkoutBook,
+}: Props) => {
+  function buttonRender() {
+    if (isAuthenticated) {
+      if (!isCheckedOut && currentLoansAccount < 5) {
+        return (
+          <button
+            className='btn btn-success btn-lg'
+            onClick={() => checkoutBook()}
+          >
+            Checkout
+          </button>
+        );
+      } else if (isCheckedOut) {
+        return (
+          <p>
+            <b>Book Checked out. Enjoy!</b>
+          </p>
+        );
+      } else if (!isCheckedOut) {
+        return <p className='text-danger'>Too many books checked out</p>;
+      }
+    }
+    return (
+      <Link className='btn btn-success btn-lg' to='/login'>
+        Sign In
+      </Link>
+    );
+  }
   return (
     <div
       className={
@@ -16,7 +54,7 @@ export const CheckoutAndReviewBox = ({ book, mobile }: Props) => {
       <div className='card-body container'>
         <div className='mt-3'>
           <p>
-            <b>0/5 </b>
+            <b>{currentLoansAccount}/5 </b>
             books checked out
           </p>
           <hr />
@@ -36,9 +74,7 @@ export const CheckoutAndReviewBox = ({ book, mobile }: Props) => {
             </p>
           </div>
         </div>
-        <Link className='btn btn-success btn-lg' to='/login'>
-          Sign In
-        </Link>
+        {buttonRender()}
         <hr />
         <p className='mt-3'>
           This number can change until placing order has been complete.

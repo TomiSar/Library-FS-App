@@ -18,7 +18,7 @@ public class BookController {
         this.bookService = bookService;
     }
 
-    @GetMapping("/secure/currentloans/account")
+    @GetMapping("/secure/currentloans/count")
     public int currentLoansAccount(@RequestHeader(value = "Authorization") String token) {
         String userEmail = ExtractJwt.palyoadJwtExctraction(token, "\"sub\"");
         return bookService.currentLoansAccount(userEmail);
