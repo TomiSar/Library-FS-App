@@ -1,4 +1,4 @@
-class BookModel {
+export default class BookModel {
   id: number;
   title: string;
   author?: string;
@@ -28,5 +28,3 @@ class BookModel {
     this.img = img;
   }
 }
-
-export default BookModel;
