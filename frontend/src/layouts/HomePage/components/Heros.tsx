@@ -3,7 +3,7 @@ import { useOktaAuth } from '@okta/okta-react';
 
 export const Heros = () => {
   const { authState } = useOktaAuth();
-  console.log(authState);
+
   return (
     <div>
       <div className='d-none d-lg-block'>

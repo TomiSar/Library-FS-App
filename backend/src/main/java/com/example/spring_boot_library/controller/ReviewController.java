@@ -17,7 +17,7 @@ public class ReviewController {
         this.reviewService = reviewService;
     }
 
-    @GetMapping("/secure/book")
+    @GetMapping("/secure/user/book")
     public Boolean reviewBookByUser(@RequestHeader(value = "Authorization") String token, @RequestParam Long bookId) throws Exception {
         String userEmail = ExtractJwt.palyoadJwtExctraction(token, "\"sub\"");
         if (userEmail == null) {

@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import BookModel from '../../models/BookModel';
+import { LeaveReview } from '../Utils/LeaveReview';
 
 type Props = {
   book: BookModel | undefined;
@@ -8,6 +9,8 @@ type Props = {
   isAuthenticated: any;
   isCheckedOut: boolean;
   checkoutBook: any;
+  isReviewLeft: boolean;
+  submitReview: any;
 };
 
 export const CheckoutAndReviewBox = ({
@@ -17,6 +20,8 @@ export const CheckoutAndReviewBox = ({
   isAuthenticated,
   isCheckedOut,
   checkoutBook,
+  isReviewLeft,
+  submitReview,
 }: Props) => {
   function buttonRender() {
     if (isAuthenticated) {
@@ -45,6 +50,25 @@ export const CheckoutAndReviewBox = ({
       </Link>
     );
   }
+
+  function reviewRender() {
+    if (isAuthenticated && !isReviewLeft) {
+      return <LeaveReview submitReview={submitReview} />;
+    } else if (isAuthenticated && isReviewLeft) {
+      return (
+        <p>
+          <b>Thank you for your review!</b>
+        </p>
+      );
+    }
+    return (
+      <div>
+        <hr />
+        <p>Sign In to leave a review</p>
+      </div>
+    );
+  }
+
   return (
     <div
       className={
@@ -79,7 +103,7 @@ export const CheckoutAndReviewBox = ({
         <p className='mt-3'>
           This number can change until placing order has been complete.
         </p>
-        <p>Sign in users are be able to give reviews</p>
+        {reviewRender()}
       </div>
     </div>
   );
