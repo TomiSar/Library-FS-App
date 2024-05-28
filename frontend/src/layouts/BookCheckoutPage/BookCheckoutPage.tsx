@@ -199,7 +199,12 @@ export const BookCheckoutPage = () => {
     isLoadingCurrentLoansAccount &&
     isLoadingBookCheckedOut &&
     isReviewLeft && <LoadingSpinner />;
-  httpError && <LoadingSpinner />;
+
+  httpError && (
+    <div className='container m-5'>
+      <p>{httpError}</p>
+    </div>
+  );
 
   async function checkoutBook() {
     const reqOptions = {
