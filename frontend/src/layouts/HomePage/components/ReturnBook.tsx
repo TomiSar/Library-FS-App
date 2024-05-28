@@ -6,7 +6,6 @@ type Props = {
 };
 
 export const ReturnBook = ({ book }: Props) => {
-  console.log(book);
   return (
     <div className='col-xs-6 col-sm-6 col-md-4 col-lg-3 mb-3'>
       <div className='text-center'>

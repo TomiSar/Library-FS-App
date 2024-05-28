@@ -14,5 +14,10 @@
 - Tables: book, checkout, history, messages, review 
 
 ## Project API endpoints (Books)
-- http://localhost:8080/api/books 		(GET all books)
-- http://localhost:8080/api/book/id 	(GET a single Book)
+- http://localhost:8080/api/books 			(GET all books)
+- http://localhost:8080/api/book/bookId		(GET a single Book)
+
+
+## Project API endpoints (Reviews)
+- http://localhost:8080/reviews 			(GET all reviews)
+- http://localhost:8080/api/reviews/bookId 	(GET a single review)
