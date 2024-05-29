@@ -138,7 +138,7 @@ export const BookCheckoutPage = () => {
       setIsLoadingUserReview(false);
       setHttpError(error.message);
     });
-  }, [authState]);
+  }, [authState, bookId]);
 
   useEffect(() => {
     const fetchCurrentUserLoansAccount = async () => {
@@ -196,9 +196,10 @@ export const BookCheckoutPage = () => {
 
   isLoading &&
     isLoadingReview &&
+    isLoadingUserReview &&
     isLoadingCurrentLoansAccount &&
-    isLoadingBookCheckedOut &&
-    isReviewLeft && <LoadingSpinner />;
+    isReviewLeft &&
+    isLoadingBookCheckedOut && <LoadingSpinner />;
 
   httpError && (
     <div className='container m-5'>

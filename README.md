@@ -14,10 +14,17 @@
 - Tables: book, checkout, history, messages, review 
 
 ## Project API endpoints (Books)
-- http://localhost:8080/api/books 			(GET all books)
-- http://localhost:8080/api/book/bookId		(GET a single Book)
-
+- http://localhost:8080/api/books 										(GET all books)
+- http://localhost:8080/api/book/bookId									(GET a single Book)
+- http://localhost:8080/api/books/secure/checkout?bookId 				(PUT checkout to book)
+- http://localhost:8080/api/books/secure/ischeckedout/byuser?bookId=1	(GET  book is checked out by user)
+- http://localhost:8080/api/books/secure/currentloans/count 			(GET users current loans count)
+- http://localhost:8080/api/books 										(GET books current loans count)
+- http://localhost:8080/api/books/secure/return?bookId 					(PUT return book)
+- http://localhost:8080/api/books/secure/renew/loan?bookId 				(PUT renew loan)
 
 ## Project API endpoints (Reviews)
-- http://localhost:8080/reviews 			(GET all reviews)
-- http://localhost:8080/api/reviews/bookId 	(GET a single review)
+- http://localhost:8080/reviews 									(GET all reviews)
+- http://localhost:8080/api/reviews/bookId 							(GET a single review)
+- http://localhost:8080/api/reviews/search/findByBookId?bookId=1 	(GET all reviews single book)
+- http://localhost:8080/reviews										(POST new review)
