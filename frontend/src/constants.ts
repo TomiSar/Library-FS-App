@@ -7,3 +7,5 @@ export const BOOK_ISCHECKEDOUT_URL =
   'http://localhost:8080/api/books/secure/ischeckedout/byuser';
 export const BOOK_CHECKEDOUT_URL =
   'http://localhost:8080/api/books/secure/checkout';
+
+export const HISTORY_URL = 'http://localhost:8080/api/histories';

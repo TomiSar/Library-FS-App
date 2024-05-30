@@ -14,6 +14,7 @@ import ReviewModel from '../../models/ReviewModel';
 import { LatestReviews } from './LatestReviews';
 import { useOktaAuth } from '@okta/okta-react';
 import ReviewRequestModel from '../../models/ReviewRequestModel';
+import { RequestOptions } from '../Utils/RequestOptions';
 
 export const BookCheckoutPage = () => {
   const { authState } = useOktaAuth();
@@ -113,13 +114,10 @@ export const BookCheckoutPage = () => {
     setIsLoadingUserReview(true);
     const fetchUserReviewBook = async () => {
       if (authState && authState?.isAuthenticated) {
-        const reqOptions = {
+        const reqOptions = RequestOptions({
           method: 'GET',
-          headers: {
-            Authorization: `Bearer ${authState?.accessToken?.accessToken}`,
-            'Content-Type': 'application/json',
-          },
-        };
+          authorization: authState?.accessToken?.accessToken,
+        });
 
         const res = await fetch(
           `${REVIEWS_URL}/secure/user/book?bookId=${bookId}`,
@@ -143,13 +141,10 @@ export const BookCheckoutPage = () => {
   useEffect(() => {
     const fetchCurrentUserLoansAccount = async () => {
       if (authState && authState.isAuthenticated) {
-        const reqOptions = {
+        const reqOptions = RequestOptions({
           method: 'GET',
-          headers: {
-            Authorization: `Bearer ${authState?.accessToken?.accessToken}`,
-            'Content-Type': 'application/json',
-          },
-        };
+          authorization: authState?.accessToken?.accessToken,
+        });
 
         const res = await fetch(CURRLOANS_URL, reqOptions);
         if (!res.ok) throw new Error('Failed fetching current loans count');
@@ -169,13 +164,10 @@ export const BookCheckoutPage = () => {
   useEffect(() => {
     const fetchUserCheckedOutBook = async () => {
       if (authState && authState.isAuthenticated) {
-        const reqOptions = {
+        const reqOptions = RequestOptions({
           method: 'GET',
-          headers: {
-            Authorization: `Bearer ${authState?.accessToken?.accessToken}`,
-            'Content-Type': 'application/json',
-          },
-        };
+          authorization: authState?.accessToken?.accessToken,
+        });
 
         const res = await fetch(
           `${BOOK_ISCHECKEDOUT_URL}?bookId=${bookId}`,
@@ -208,13 +200,10 @@ export const BookCheckoutPage = () => {
   );
 
   async function checkoutBook() {
-    const reqOptions = {
+    const reqOptions = RequestOptions({
       method: 'PUT',
-      headers: {
-        Authorization: `Bearer ${authState?.accessToken?.accessToken}`,
-        'Content-Type': 'application/json',
-      },
-    };
+      authorization: authState?.accessToken?.accessToken,
+    });
 
     const res = await fetch(
       `${BOOK_CHECKEDOUT_URL}?bookId=${bookId}`,

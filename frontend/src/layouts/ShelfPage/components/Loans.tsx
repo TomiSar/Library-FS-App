@@ -5,6 +5,7 @@ import ShelfCurrentLoans from '../../../models/ShelfCurrentLoans';
 import { LoadingSpinner } from '../../Utils/LoadingSpinner';
 import { BOOKS_URL } from '../../../constants';
 import { LoansModal } from './LoansModal';
+import { RequestOptions } from '../../Utils/RequestOptions';
 
 export const Loans = () => {
   const { authState } = useOktaAuth();
@@ -21,13 +22,10 @@ export const Loans = () => {
     setIsLoadingUserLoans(true);
     const fetchUserCurrentLoans = async () => {
       if (authState && authState?.isAuthenticated) {
-        const reqOptions = {
+        const reqOptions = RequestOptions({
           method: 'GET',
-          headers: {
-            Authorization: `Bearer ${authState?.accessToken?.accessToken}`,
-            'Content-Type': 'application/json',
-          },
-        };
+          authorization: authState?.accessToken?.accessToken,
+        });
 
         const res = await fetch(`${BOOKS_URL}/secure/currentloans`, reqOptions);
 
@@ -54,13 +52,10 @@ export const Loans = () => {
   );
 
   async function returnBook(bookId: number) {
-    const reqOptions = {
+    const reqOptions = RequestOptions({
       method: 'PUT',
-      headers: {
-        Authorization: `Bearer ${authState?.accessToken?.accessToken}`,
-        'Content-Type': 'application/json',
-      },
-    };
+      authorization: authState?.accessToken?.accessToken,
+    });
 
     const res = await fetch(
       `${BOOKS_URL}/secure/return?bookId=${bookId}`,
@@ -72,13 +67,10 @@ export const Loans = () => {
   }
 
   async function renewLoan(bookId: number) {
-    const reqOptions = {
+    const reqOptions = RequestOptions({
       method: 'PUT',
-      headers: {
-        Authorization: `Bearer ${authState?.accessToken?.accessToken}`,
-        'Content-Type': 'application/json',
-      },
-    };
+      authorization: authState?.accessToken?.accessToken,
+    });
 
     const res = await fetch(
       `${BOOKS_URL}/secure/renew/loan?bookId=${bookId}`,
