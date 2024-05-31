@@ -28,3 +28,6 @@
 - http://localhost:8080/api/reviews/bookId 						(GET a single review)
 - http://localhost:8080/api/reviews/search/findByBookId?bookId	(GET all reviews single book)
 - http://localhost:8080/reviews									(POST new review)
+
+## Project API endpoints (Messages)
+- http://localhost:8080/messages 								(GET all reviews)

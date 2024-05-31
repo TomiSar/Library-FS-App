@@ -1,6 +1,7 @@
 package com.example.spring_boot_library.config;
 
 import com.example.spring_boot_library.entity.Book;
+import com.example.spring_boot_library.entity.Message;
 import com.example.spring_boot_library.entity.Review;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
@@ -17,8 +18,10 @@ public class DataRestConfig implements RepositoryRestConfigurer {
         HttpMethod[] theUnsupportedActions = {HttpMethod.POST, HttpMethod.PATCH, HttpMethod.PUT, HttpMethod.DELETE};
         config.exposeIdsFor(Book.class);
         config.exposeIdsFor(Review.class);
+        config.exposeIdsFor(Message.class);
         disableHttpMethod(Book.class, config, theUnsupportedActions);
         disableHttpMethod(Review.class, config, theUnsupportedActions);
+        disableHttpMethod(Message.class, config, theUnsupportedActions);
 
         // Configure CORS
         cors.addMapping(config.getBasePath() + "/**").allowedOrigins(theAllowedOrigins);
