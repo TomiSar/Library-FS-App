@@ -23,15 +23,15 @@ public class Checkout {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "user_email")
+    @Column(name = "user_email", nullable = false)
     private String userEmail;
 
-    @Column(name = "checkout_date")
+    @Column(name = "checkout_date", nullable = false)
     private String checkoutDate;
 
-    @Column(name = "return_date")
+    @Column(name = "return_date", nullable = false)
     private String returnDate;
 
-    @Column(name = "book_id")
+    @Column(name = "book_id", nullable = false)
     private Long bookId;
 }

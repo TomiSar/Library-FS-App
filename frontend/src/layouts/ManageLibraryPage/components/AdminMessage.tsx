@@ -48,7 +48,7 @@ export const AdminMessage = ({ message, submitResponseToQuestion }: Props) => {
             </div>
             <div>
               <button
-                type='button'
+                type='submit'
                 className='btn btn-primary mt-3'
                 onClick={submitBtn}
               >

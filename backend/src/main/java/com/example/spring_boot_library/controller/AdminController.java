@@ -1,6 +1,5 @@
 package com.example.spring_boot_library.controller;
 
-import com.example.spring_boot_library.entity.Message;
 import com.example.spring_boot_library.requestmodels.AddBookRequest;
 import com.example.spring_boot_library.service.AdminService;
 import com.example.spring_boot_library.utils.ExtractJwt;
@@ -19,6 +18,24 @@ public class AdminController {
         this.adminService = adminService;
     }
 
+    @PutMapping("/secure/increase/book/quantity")
+    public void increaseBookQuantity(@RequestHeader(value = "Authorization") String token, @RequestParam Long bookId) throws Exception {
+        String admin = ExtractJwt.palyoadJwtExctraction(token, "\"userType\"");
+        if (admin == null || !admin.equals(("admin"))) {
+            throw new Exception("Administration page only. User is nor admin!");
+        }
+        adminService.increaseBookQuantity(bookId);
+    }
+
+    @PutMapping("/secure/decrease/book/quantity")
+    public void decreaseBookQuantity(@RequestHeader(value = "Authorization") String token, @RequestParam Long bookId) throws Exception {
+        String admin = ExtractJwt.palyoadJwtExctraction(token, "\"userType\"");
+        if (admin == null || !admin.equals(("admin"))) {
+            throw new Exception("Administration page only. User is nor admin!");
+        }
+        adminService.decreaseBookQuantity(bookId);
+    }
+
     @PostMapping("/secure/add/book")
     public void postBook(@RequestHeader(value = "Authorization") String token, @RequestBody AddBookRequest addBookRequest) throws Exception {
         String admin = ExtractJwt.palyoadJwtExctraction(token, "\"userType\"");
@@ -26,5 +43,15 @@ public class AdminController {
             throw new Exception("Administration page only. User is nor admin!");
         }
         adminService.postBook(addBookRequest);
+    }
+
+    @DeleteMapping("/secure/delete/book")
+    public void deleteBook(@RequestHeader(value="Authorization") String token,
+                           @RequestParam Long bookId) throws Exception {
+        String admin = ExtractJwt.palyoadJwtExctraction(token, "\"userType\"");
+        if (admin == null || !admin.equals("admin")) {
+            throw new Exception("Administration page only");
+        }
+        adminService.deleteBook(bookId);
     }
 }

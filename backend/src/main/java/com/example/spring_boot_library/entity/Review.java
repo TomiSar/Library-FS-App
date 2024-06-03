@@ -18,14 +18,15 @@ public class Review {
     @Column(name = "user_email")
     private String userEmail;
 
-    @Column(name = "date")
     @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "date", nullable = false, updatable = false)
     private Date date;
 
-    @Column(name = "rating")
+    @Column(name = "rating", nullable = false)
     private double rating;
 
-    @Column(name = "book_id")
+    @Column(name = "book_id", nullable = false)
     private Long bookId;
 
     @Column(name = "review_description")

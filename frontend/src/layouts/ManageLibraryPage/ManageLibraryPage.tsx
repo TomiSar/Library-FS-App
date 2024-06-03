@@ -1,27 +1,28 @@
 import { useOktaAuth } from '@okta/okta-react';
 import { useState } from 'react';
 import { Redirect } from 'react-router-dom';
-import { AdminMessages } from './componenets/AdminMessages';
-import { AddNewBook } from './componenets/AddNewBook';
+import { AdminMessages } from './components/AdminMessages';
+import { AddNewBook } from './components/AddNewBook';
+import { ChangeQuantityOfBooks } from './components/ChangeQuantityOfBooks';
 
 export const ManageLibraryPage = () => {
   const { authState } = useOktaAuth();
-  const [changeQuantittyOfBooksClick, setChangeQuantittyOfBooksClick] =
+  const [changeQuantityOfBooksClick, setChangeQuantityOfBooksClick] =
     useState(false);
   const [messagesClick, setMessagesClick] = useState(false);
 
   function addBookClickFunction() {
-    setChangeQuantittyOfBooksClick(false);
+    setChangeQuantityOfBooksClick(false);
     setMessagesClick(false);
   }
 
   function changeQuantityOfBooksClickFunction() {
-    setChangeQuantittyOfBooksClick(true);
+    setChangeQuantityOfBooksClick(true);
     setMessagesClick(true);
   }
 
   function messagesClickFunction() {
-    setChangeQuantittyOfBooksClick(false);
+    setChangeQuantityOfBooksClick(false);
     setMessagesClick(true);
   }
 
@@ -93,7 +94,7 @@ export const ManageLibraryPage = () => {
             role='tabpanel'
             aria-labelledby='nav-quantity-tab'
           >
-            {changeQuantittyOfBooksClick ? <>Change Quantity</> : <></>}
+            {changeQuantityOfBooksClick ? <ChangeQuantityOfBooks /> : <></>}
           </div>
           <div
             className='tab-pane fade'

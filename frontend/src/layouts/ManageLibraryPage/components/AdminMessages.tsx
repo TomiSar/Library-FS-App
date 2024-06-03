@@ -64,35 +64,6 @@ export const AdminMessages = () => {
     </div>
   );
 
-  //   async function submitResponseToQuestion(id: number, response: string) {
-  //     if (
-  //       authState &&
-  //       authState?.isAuthenticated &&
-  //       id !== null &&
-  //       response !== ''
-  //     ) {
-  //       const messageAdminRequestModel: AdminMessageRequest =
-  //         new AdminMessageRequest(id, response);
-  //       const reqOptions = {
-  //         method: 'PUT',
-  //         headers: {
-  //           Authorization: `Bearer ${authState?.accessToken?.accessToken}`,
-  //           'Content-Type': 'application/json',
-  //         },
-  //         body: JSON.stringify(messageAdminRequestModel),
-  //       };
-
-  //       const res = await fetch(
-  //         `${MESSAGES_URL}/secure/admin/message`,
-  //         reqOptions
-  //       );
-
-  //       if (!res.ok) throw new Error('Failed fetching user messages');
-
-  //       setBtnSubmit(!btnSubmit);
-  //     }
-  //   }
-
   async function submitResponseToQuestion(id: number, response: string) {
     if (
       authState &&
