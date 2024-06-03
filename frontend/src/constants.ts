@@ -10,3 +10,4 @@ export const BOOK_CHECKEDOUT_URL =
 
 export const HISTORY_URL = 'http://localhost:8080/api/histories';
 export const MESSAGES_URL = 'http://localhost:8080/api/messages';
+export const ADMIN_URL = 'http://localhost:8080/api/admin';
