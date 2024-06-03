@@ -39,6 +39,9 @@ export const BookCheckoutPage = () => {
   const [isCheckedOut, setIsCheckedOut] = useState(false);
   const [isLoadingBookCheckedOut, setIsLoadingBookCheckedOut] = useState(false);
 
+  // Payment
+  const [displayError, setDisplayError] = useState(false);
+
   const bookId = window.location.pathname.split('/')[2];
 
   useEffect(() => {
@@ -206,12 +209,17 @@ export const BookCheckoutPage = () => {
     });
 
     const res = await fetch(
-      `${BOOK_CHECKEDOUT_URL}?bookId=${bookId}`,
+      `${BOOK_CHECKEDOUT_URL}?bookId=${book?.id}`,
       reqOptions
     );
 
-    if (!res.ok) throw new Error('Failed fetching checked out books');
+    if (!res.ok) {
+      setDisplayError(true);
+      return;
+      // throw new Error('Failed fetching checked out books');
+    }
 
+    setDisplayError(false);
     setIsCheckedOut(true);
   }
 
@@ -244,6 +252,11 @@ export const BookCheckoutPage = () => {
   return (
     <div>
       <div className='container d-none d-lg-block'>
+        {displayError && (
+          <div className='alert alert-danger mt-3' role='alert'>
+            Please pay outstanding fees and/or return late book(s)
+          </div>
+        )}
         <div className='row mt-5'>
           <div className='col-sm-2 col-md-2'>
             {book?.img ? (
@@ -280,6 +293,11 @@ export const BookCheckoutPage = () => {
         <LatestReviews reviews={reviews} bookId={book?.id} mobile={false} />
       </div>
       <div className='container d-lg-none mt-5'>
+        {displayError && (
+          <div className='alert alert-danger mt-3' role='alert'>
+            Please pay outstanding fees and/or return late book(s)
+          </div>
+        )}
         <div className='d-flex justify-content-center alighn-items-center'>
           {book?.img ? (
             <img src={book?.img} width='226' height='349' alt='Book' />

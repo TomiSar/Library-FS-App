@@ -14,10 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 @Service
@@ -25,6 +22,7 @@ import java.util.concurrent.TimeUnit;
 public class BookService {
 
     private BookRepository bookRepository;
+
     private CheckoutRepository checkoutRepository;
 
     private HistoryRepository historyRepository;
@@ -119,7 +117,7 @@ public class BookService {
 
         for (Book book : books) {
             Optional<Checkout> checkout = checkoutList.stream()
-                    .filter(x -> x.getBookId() == book.getId()).findFirst();
+                    .filter(x -> Objects.equals(x.getBookId(), book.getId())).findFirst();
 
             if (checkout.isPresent()) {
 
@@ -156,7 +154,7 @@ public class BookService {
 
         TimeUnit time = TimeUnit.DAYS;
         double differenceInTime = time.convert(retDate.getTime() - now.getTime(), TimeUnit.MILLISECONDS);
-        
+
         if (differenceInTime < 0) {
             Payment payment = paymentRepository.findByUserEmail(userEmail);
 

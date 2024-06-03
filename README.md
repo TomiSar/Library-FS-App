@@ -8,6 +8,9 @@
 - cd frontend
 - npm run dev
 
+## Docs Stripe
+- https://docs.stripe.com/testing#cards
+
 ## Database initialization
 - use files in scripts folder and execute sql scripts to create sample data  
 - reactlibrarydatabase

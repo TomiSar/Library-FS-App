@@ -12,3 +12,5 @@ export const BOOK_CHECKEDOUT_URL =
 export const HISTORY_URL = 'https://localhost:8443/api/histories';
 export const MESSAGES_URL = 'https://localhost:8443/api/messages';
 export const ADMIN_URL = 'https://localhost:8443/api/admin';
+
+export const PAYMENTS_URL = 'https://localhost:8443/api/payment';

@@ -13,7 +13,7 @@ public class Payment {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "user_email", nullable = false)
+    @Column(name="user_email", nullable = false)
     private String userEmail;
 
     @Column(name = "amount", nullable = false)

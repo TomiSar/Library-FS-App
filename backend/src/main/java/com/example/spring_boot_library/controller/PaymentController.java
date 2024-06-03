@@ -1,6 +1,5 @@
 package com.example.spring_boot_library.controller;
 
-import com.example.spring_boot_library.requestmodels.AddBookRequest;
 import com.example.spring_boot_library.requestmodels.PaymentInfoRequest;
 import com.example.spring_boot_library.service.PaymentService;
 import com.example.spring_boot_library.utils.ExtractJwt;
@@ -27,11 +26,12 @@ public class PaymentController {
     public ResponseEntity<String> createPaymentIntent(@RequestBody PaymentInfoRequest paymentInfoRequest) throws StripeException {
         PaymentIntent paymentIntent = paymentService.createPaymentIntent(paymentInfoRequest);
         String paymentStr = paymentIntent.toJson();
+
         return new ResponseEntity<>(paymentStr, HttpStatus.OK);
     }
 
-    @PostMapping("/payment-complete")
-    public ResponseEntity<String> stripePaymentComplete(@RequestHeader(value = "Authorization") String token) throws Exception {
+    @PutMapping("/payment-complete")
+    public ResponseEntity<String> stripePaymentComplete(@RequestHeader(value="Authorization") String token) throws Exception {
         String userEmail = ExtractJwt.palyoadJwtExctraction(token, "\"sub\"");
         if (userEmail == null) {
             throw new Exception("User email is missing");

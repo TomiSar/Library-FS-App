@@ -31,7 +31,7 @@ public class PaymentService {
     }
 
     public PaymentIntent createPaymentIntent(PaymentInfoRequest paymentInfoRequest) throws StripeException {
-        List<String> paymentMethodTypes = new ArrayList<String>();
+        List<String> paymentMethodTypes = new ArrayList<>();
         paymentMethodTypes.add("card");
 
         Map<String, Object> params = new HashMap<>();
@@ -46,7 +46,7 @@ public class PaymentService {
         Payment payment = paymentRepository.findByUserEmail(userEmail);
 
         if (payment == null) {
-           throw new Exception("Payment information is missing");
+            throw new Exception("Payment information is missing");
         }
         payment.setAmount(00.00);
         paymentRepository.save(payment);

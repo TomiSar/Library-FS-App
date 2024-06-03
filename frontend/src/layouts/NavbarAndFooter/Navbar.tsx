@@ -7,8 +7,6 @@ export const Navbar = () => {
   const handleLogout = () => oktaAuth.signOut();
   !authState && <LoadingSpinner />;
 
-  console.log(authState);
-
   return (
     <nav className='navbar navbar-expand-lg navbar-dark main-color py-3'>
       <div className='container-fluid'>
@@ -46,6 +44,11 @@ export const Navbar = () => {
                 <li className='nav-item'>
                   <NavLink className='nav-link' to='/messages'>
                     Messages
+                  </NavLink>
+                </li>
+                <li className='nav-item'>
+                  <NavLink className='nav-link' to='/fees'>
+                    Pay Fees
                   </NavLink>
                 </li>
               </>
