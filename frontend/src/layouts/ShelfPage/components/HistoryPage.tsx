@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import HistoryModel from '../../../models/HistoryModel';
 import { useOktaAuth } from '@okta/okta-react';
 import { HISTORY_URL } from '../../../constants';
