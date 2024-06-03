@@ -1,13 +1,14 @@
-export const BOOKS_URL = 'http://localhost:8080/api/books';
-export const REVIEWS_URL = 'http://localhost:8080/api/reviews';
+// API endpoint addresses
+export const BOOKS_URL = 'https://localhost:8443/api/books';
+export const REVIEWS_URL = 'https://localhost:8443/api/reviews';
 export const CURRLOANS_URL =
-  'http://localhost:8080/api/books/secure/currentloans/count';
+  'https://localhost:8443/api/books/secure/currentloans/count';
 
 export const BOOK_ISCHECKEDOUT_URL =
-  'http://localhost:8080/api/books/secure/ischeckedout/byuser';
+  'https://localhost:8443/api/books/secure/ischeckedout/byuser';
 export const BOOK_CHECKEDOUT_URL =
-  'http://localhost:8080/api/books/secure/checkout';
+  'https://localhost:8443/api/books/secure/checkout';
 
-export const HISTORY_URL = 'http://localhost:8080/api/histories';
-export const MESSAGES_URL = 'http://localhost:8080/api/messages';
-export const ADMIN_URL = 'http://localhost:8080/api/admin';
+export const HISTORY_URL = 'https://localhost:8443/api/histories';
+export const MESSAGES_URL = 'https://localhost:8443/api/messages';
+export const ADMIN_URL = 'https://localhost:8443/api/admin';
